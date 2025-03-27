@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Запись на приём (Клизма Pro) 🔥</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #ff4d4d);
+            margin: 0;
+            padding: 0;
+            color: white;
+            animation: fadeIn 1s ease-in-out;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff0000, #ff6600);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        .container {
+            max-width: 420px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            color: black;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+        button {
+            background: linear-gradient(135deg, #ff0000, #ff4d4d);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #d40000, #ff0000);
+            transform: scale(1.05);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .popup h2 {
+            color: black;
+        }
+        .popup img {
+            width: 100px;
+            margin: 10px 0;
+        }
+        .popup button {
+            background: #ff0000;
+            color: white;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    💉 Онлайн-запись (Клизма Pro)
+</header>
+
+<div class="container">
+    <form id="appointmentForm">
+        <label for="name">👤 Ваше имя:</label>
+        <input type="text" id="name" required>
+
+        <label for="phone">📞 Телефон:</label>
+        <input type="tel" id="phone" required>
+
+        <label for="service">🩺 Выберите услугу:</label>
+        <select id="service">
+            <option value="consultation">Консультация</option>
+            <option value="diagnostics">Диагностика</option>
+            <option value="therapy">Лечение</option>
+            <option value="tests">Анализы</option>
+            <option value="surgery">Хирургия</option>
+            <option value="klizma">🔥 Клизмирование (Pro Max) 🔥</option>
+        </select>
+
+        <label for="doctor">👨‍⚕️ Выберите врача:</label>
+        <select id="doctor">
+            <option value="dermatologist">Дерматолог</option>
+            <option value="therapist">Терапевт</option>
+            <option value="surgeon">Хирург</option>
+            <option value="klizma-master">🔴 Специалист по клизмированию 🔴</option>
+        </select>
+
+        <label for="date">📅 Дата приёма:</label>
+        <input type="date" id="date" required>
+
+        <label for="comments">📝 Комментарий (необязательно):</label>
+        <textarea id="comments" placeholder="Например, особые пожелания..."></textarea>
+
+        <button type="submit">✅ Записаться</button>
+    </form>
+</div>
+
+<div class="popup" id="popup">
+    <h2>✅ Запись подтверждена!</h2>
+    <img src="https://media.tenor.com/T3L8sZ65Ym8AAAAC/farting-shrek.gif" alt="Клизма успешно">
+    <p>Скоро мы свяжемся с вами для уточнения деталей. Спасибо за доверие!</p>
+    <button onclick="closePopup()">Ок</button>
+</div>
+
+<script>
+    document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let phone = document.getElementById("phone").value;
+        let service = document.getElementById("service").value;
+        let doctor = document.getElementById("doctor").value;
+        let date = document.getElementById("date").value;
+        let comments = document.getElementById("comments").value;
+
+        let message = `🔥 Запись на приём (Клизма Pro) 🔥\n\n`
+                    + `👤 Имя: ${name}\n`
+                    + `📞 Телефон: ${phone}\n`
+                    + `🩺 Услуга: ${service}\n`
+                    + `👨‍⚕️ Врач: ${doctor}\n`
+                    + `📅 Дата: ${date}\n`
+                    + `📝 Комментарий: ${comments}`;
+
+        let chatId = "5678878569";  // Ваш Chat ID
+        let token = "7697086974:AAE-EItjFOfntCJqUoaLGBF0MxuAOECCEGk";  // Ваш API токен
+
+        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            showPopup();
+        })
+        .catch(error => console.error('Ошибка:', error));
+    });
+
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
